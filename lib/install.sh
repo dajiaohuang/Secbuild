@@ -2035,11 +2035,6 @@ install_tools_parallel() {
     declare -a pids=()
     declare -A pid_to_tool=()
 
-    if [[ ! "$max_jobs" =~ ^[0-9]+$ ]] || [[ "$max_jobs" =~ ^0+$ ]]; then
-        error "Parallel job count must be greater than zero"
-        return 1
-    fi
-    
     # Check if Bash supports wait -n (Bash 4.3+)
     local supports_wait_n=0
     if [[ "${BASH_VERSION%%.*}" -ge 4 ]]; then
